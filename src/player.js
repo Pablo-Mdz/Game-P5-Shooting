@@ -4,21 +4,17 @@ class Player {
         this.height = 70
         this.x = 0
         this.y = 0
-        this.velocity = 1
-        this.gravity = 0.2
+        // this.velocity = 1
+       
 
     }
     draw() {
-
-        // this.velocity += this.gravity
         // this.y += this.velocity
         if (this.y >= height - this.height) this.y = height - this.height
         image(game.playerImage, this.x, this.y, this.width, this.height)
 
     }
-    move() {
-        // this.velocity = -15
-    }
+    
     moveUp() {
         if (this.y >= 30) {
             this.y -= 30
@@ -39,5 +35,8 @@ class Player {
         if (this.x <= 900) {
             this.x += 30 //10 go slow
         }
+    }
+    shoot () {
+
     }
 }

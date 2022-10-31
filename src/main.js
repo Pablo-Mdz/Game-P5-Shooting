@@ -14,11 +14,8 @@ function draw() {
     game.draw()
 }
 
-function keyPressed() { 
-    if (keyCode === 32) {
-        console.log('jhfcd')
-        game.player.move()
-    }
+function keyPressed() {
+
     if (keyCode === 39) {
         game.player.moveRight()
     }
@@ -27,12 +24,14 @@ function keyPressed() {
         game.player.moveDown()
     }
     if (keyCode === 37) {
-		game.player.moveLeft()
-	}
+        game.player.moveLeft()
+    }
 
-	if (keyCode === 38) {
-		game.player.moveUp()
-	}
-    
-   
+    if (keyCode === 38) {
+        game.player.moveUp()
+    }
+    //shooting
+    if (keyCode === 32) {
+        game.b()
+    }
 }
