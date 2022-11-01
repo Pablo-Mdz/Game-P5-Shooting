@@ -7,10 +7,14 @@ class Game {
         this.boolets = []
     }
     preload() {
-        this.backgroundImage = loadImage("../pictures/plx-1.png")
+        
+    //     this.backgroundImage = [ 
+    //         {src: loadImage("../pictures/bg-land.jpeg"), x: 0, speed: 2},
+    //         {src: loadImage("../pictures/bg-land.jpeg"), x: 0, speed: 2}
+    //  ]
+        this.backgroundImage = loadImage("../pictures/bg-land.jpeg")
         this.playerImage = loadImage("../pictures/character-down.png")
-        this.shoot = loadImage("../pictures/tile000.png")
-
+        this.boolet1 = loadImage("../pictures/heart1.png")
     }
     draw() {
         clear()
@@ -18,12 +22,10 @@ class Game {
         this.player.draw()
         this.boolets.forEach(boolet => {
             boolet.draw()
-            image(this.shoot, boolet.x, boolet.y, boolet.width, boolet.height)
+            image(this.boolet1, boolet.x, boolet.y, boolet.width, boolet.height)
         })
-
     }
-    b() {
-        console.log('fff')
+    shoot() {
         this.boolets.push(new Gun(this.player.x, this.player.y))
     }
 }

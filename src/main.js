@@ -6,8 +6,7 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(1000, 600)
-    background("pink ")
+    createCanvas(1200, 600)
 }
 
 function draw() {
@@ -32,6 +31,6 @@ function keyPressed() {
     }
     //shooting
     if (keyCode === 32) {
-        game.b()
+        game.shoot()
     }
 }
