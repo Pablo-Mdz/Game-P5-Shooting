@@ -1,3 +1,4 @@
+//! start the game
 const game = new Game()
 
 function preload() {
@@ -15,6 +16,7 @@ function draw() {
 
 function keyPressed() {
 
+    //! move player
     if (keyCode === 39) {
         game.player.moveRight()
     }
@@ -29,7 +31,8 @@ function keyPressed() {
     if (keyCode === 38) {
         game.player.moveUp()
     }
-    //shooting
+   
+    //! shooting
     if (keyCode === 32) {
         game.shoot()
     }

@@ -2,7 +2,11 @@ h1 {
     color: rebeccapurple;
     text-align: center;
 }
-
+#scoreAndLives {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
 div {
     text-align: center;
 }

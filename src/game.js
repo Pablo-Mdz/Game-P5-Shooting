@@ -4,9 +4,10 @@ class Game {
         this.backgroundImage
         this.background = new Background()
         this.player = new Player()
-        this.boolets = []
+        this.bullets = []
         this.spiders = []
         this.dogs = []
+       
 
     }
 
@@ -14,10 +15,10 @@ class Game {
         
         this.backgroundImage = loadImage("../pictures/bg-land.jpeg")
         this.playerImage = loadImage("../pictures/cupido1.png")
-        this.boolet1 = loadImage("../pictures/heart1.png")
+        this.heart = loadImage("../pictures/heart1.png")
         this.spiderimg = loadImage("../pictures/spider.png")
 
-        //images Dogs
+        //! images Dogs
         this.dog1 = loadImage("../pictures/dog1.png")
         this.dog2 = loadImage("../pictures/dog2.png")
         this.dog3 = loadImage("../pictures/dog3.png")
@@ -36,13 +37,15 @@ class Game {
         this.background.draw()
         this.player.draw()
 
-        //create bullet
-        this.boolets.forEach(boolet => {
-            boolet.draw()
-            image(this.boolet1, boolet.x, boolet.y, boolet.width, boolet.height)
+
+        //! create bullet
+        this.bullets.forEach(bullet => {
+            bullet.draw()
+            image(this.heart, bullet.x, bullet.y, bullet.width, bullet.height)
         })
 
-        //create spiders
+
+        //! create spiders
         this.spiders.forEach(spider => {
             spider.draw()
             image(this.spiderimg, spider.x, spider.y, spider.width, spider.height)
@@ -50,45 +53,73 @@ class Game {
         if (frameCount % 250 === 0) {
             this.spiders.push(new Spiders(this.spiderimg[Math.floor(Math.random() * 6)]))
         }
-        
-        // boolet collision with the dog
-        this.dogs = this.dogs.filter(dog => {
-            if (dog.collision(this.boolets) ) {
-                console.log("test")
-                return false
-            } else {
-                return true
-            }
-        })
 
 
-
-        // this.boolets = this.boolets.filter(gun => {
-        //     if (gun.collision(this.dogs) || gun.x < -gun.width) {
-        //         return false
-        //     } else {
-        //         return true
-        //     }
-        // })
-       
-                    
-
-
-        //dogs from the side
+        //! dogs from the side
         if (frameCount % 140 === 0) {
-            this.dogs.push(new Pets(this.dogsImg[Math.floor(Math.random() * 6)]))
+            this.dogs.push(new Pets(this.dogsImg[Math.floor(Math.random() * 9)]))
         }
         this.dogs.forEach(dog => {
             dog.draw()
         })
-    }
-   
-   shoot() {
-       this.boolets.push(new Gun(this.player.x + 60 , this.player.y + 20))
-    }
+       
+
+        //! boolet collision with the dog
+         for ( let i=0; i < this.bullets.length; i++ ) {
+            this.dogs = this.dogs.filter(oliver => { 
+                if (oliver.collision(this.bullets[i]) || oliver.x < -oliver.width) {
+                            console.log("test apear")
+                            return false
+                        } else {
+                            return true
+                        }
+                    })
+                }
+
+        //! spider collision with the dog
+         for ( let i=0; i < this.spiders.length; i++ ) {
+            this.dogs = this.dogs.filter(oliver => { 
+                if (oliver.collision(this.spiders[i]) || oliver.x < -oliver.width) {
+                            console.log("test apear")
+                            return false
+                        } else {
+                            return true
+                        }
+                    })
+                }
+
+
+          //! score win
+        if (this.bullets.score > 100) {
+            textSize(32)
+            text("You won!!!!!! :D", 100, 100)
+            noLoop()
+        }
     
 
+    }
+
+   //! shoot bullets
+   shoot() {
+       this.bullets.push(new Bullet(this.player.x + 60 , this.player.y + 20))
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //to stop the game
 //     this.obstacles.forEach(obstacle => {    
 //         obstacle.draw()
@@ -116,4 +147,4 @@ class Game {
 
 
 // sound with love
-// aranas se caen al morir (girando)
+// aranas se caen al morir (girando
