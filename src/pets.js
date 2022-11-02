@@ -2,10 +2,10 @@ class Pets {
     constructor(image) {
         this.image = image
         this.x = width
-        this.y = (Math.random() * height - 5)
+        this.y = (Math.random() * height / 2)
         this.width = 100
         this.height = 80
-        
+
         this.counterDisplay = document.querySelector("h3 span");
 
     }
@@ -20,7 +20,7 @@ class Pets {
 
     //! collision bullets with dogs
     collision(element) {
-       
+
 
         let dogX = this.x + this.width
         let dogY = this.y + this.height
@@ -31,7 +31,7 @@ class Pets {
         if (dist(dogX, dogY, bulletX, bulletY) > this.width) {
             return false
         } else {
-           
+
             return true
         }
     }

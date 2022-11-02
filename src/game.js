@@ -60,23 +60,23 @@ class Game {
             spider.draw()
             image(this.spiderimg, spider.x, spider.y, spider.width, spider.height)
         })
-        if (frameCount % 250 === 0) {
+        if (frameCount % 100 === 0) {
             this.spiders.push(new Spiders(this.spiderimg[Math.floor(Math.random() * 6)]))
         }
+        
         //! create rat
         this.rat.forEach(rata => {
             rata.draw()
             image(this.ratImg, rata.x, rata.y, rata.width, rata.height)
         })
-    
-        if (frameCount % 200 === 0) {
+        if (frameCount % 100 === 0) {
             this.rat.push(new Rat(this.ratImg[Math.floor(Math.random() * 6)]))
         }
 
 
         //! dogs from the side
-        if (frameCount % 140 === 0) {
-            this.dogs.push(new Pets(this.dogsImg[Math.floor(Math.random() * 8)]))
+        if (frameCount % 150 === 0) {
+            this.dogs.push(new Pets(this.dogsImg[Math.floor(Math.random() * 2)]))
         }
         this.dogs.forEach(dog => {
             dog.draw()
@@ -107,10 +107,24 @@ class Game {
                     })
                 }
 
+        //! chancla collision with the rat
+         for ( let i=0; i < this.chancla.length; i++ ) {
+            this.rat = this.rat.filter(rata => { 
+                if (rata.collision(this.chancla[i]) ||rata.x < rata.width) {
+                            return false
+                        } else {
+                            return true
+                        }
+                    })
+                }
+
+        
+
         //! spider collision with the dog
          for ( let i=0; i < this.spiders.length; i++ ) {
             this.dogs = this.dogs.filter(oliver => { 
                 if (oliver.collision(this.spiders[i]) || oliver.x < -oliver.width) {
+                    OliverScreamSound.play()
                     textSize(100)
                     text("You lost!!!!!! :D", 600, 300)
                     noLoop()
@@ -120,11 +134,11 @@ class Game {
                         }
                     })
                 }
-
         //! rat collision with the dog
          for ( let i=0; i < this.rat.length; i++ ) {
             this.dogs = this.dogs.filter(oliver => { 
                 if (oliver.collision(this.rat[i]) || oliver.x < -oliver.width) {
+                    OliverScreamSound.play()
                     textSize(100)
                     text("You lost!!!!!! :D", 600, 300)
                     noLoop()
@@ -136,9 +150,20 @@ class Game {
                 }
         //! spider collision with the player
         this.spiders = this.spiders.filter(spider => {
-            if (spider.collision(this.player) || spider.x < -spider.width) {
+            if (spider.collision(this.player) ||spider.x < -spider.width) {
                 textSize(100)
             text("You LOST!!!!!! :D", 600, 300)
+            noLoop()
+                return false
+            } else {
+                return true
+            }
+        })
+        //! rat collision with the player
+        this.rat = this.rat.filter(rata => {
+            if (rata.collision(this.player) ||rata.x < -rata.width) {
+                textSize(100)
+            text("You LOST!!!!!! :D", 700, 300)
             noLoop()
                 return false
             } else {
@@ -163,9 +188,11 @@ class Game {
    //! shoot bullets
    shootHeart() {
        this.bullets.push(new Bullet(this.player.x + 60 , this.player.y + 20))
+       shootSound2.play()
     }
    shootChancla() {
        this.chancla.push(new Chancla(this.player.x + 60 , this.player.y + 20))
+       shootSound.play()
     }
     
 }
@@ -193,20 +220,6 @@ class Game {
                 // text('you won!!' , 300,300)
 //         }
         
-//     });
-// if(!obstacle.collision(player)){
-//     obstacle.x --
-// }
-    // if (frameCount % 100 === 0) {
-    //     this.obstacles.push(new Obstacle(this.coinImage))
-    // // }
-    // if (frameCount % 100 === 0) {
-    //     this.spider.push(new Spider(this.spiderimg))
-    // }
-
-    // this.spiders.forEach(spider => {
-    //     spider.draw()
-    // })
 
 
 

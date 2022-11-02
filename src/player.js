@@ -3,7 +3,7 @@ class Player {
         this.width = 80
         this.height = 70
         this.x = 0
-        this.y = 0
+        this.y = 300
         this.score = 0
     }
     draw() {

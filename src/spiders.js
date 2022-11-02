@@ -1,6 +1,6 @@
 class Spiders {
     constructor() {
-        this.x = (Math.random() * width)
+        this.x = (Math.random() * width/2)
         this.y = 0
         this.width = 40
         this.height = 50
@@ -35,7 +35,7 @@ class Spiders {
 //! class rat
 class Rat {
     constructor() {
-        this.x = (Math.random() * width)
+        this.x = (Math.random() * width /2)
         this.y = 600
         this.width = 55
         this.height = 30
