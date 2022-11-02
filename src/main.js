@@ -1,11 +1,11 @@
 //! start the game
 const game = new Game()
 
+
 function preload() {
     game.preload()
 
 }
-
 function setup() {
     createCanvas(1200, 600)
 }
@@ -31,9 +31,12 @@ function keyPressed() {
     if (keyCode === 38) {
         game.player.moveUp()
     }
-   
+
     //! shooting
     if (keyCode === 32) {
-        game.shoot()
+        game.shootHeart()
+    }
+    if (keyCode === 83) {
+        game.shootChancla()
     }
 }

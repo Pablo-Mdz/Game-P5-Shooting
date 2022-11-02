@@ -12,22 +12,22 @@ class Bullet {
         this.x += this.velocity
 
     }
-    // collision(element) {
-    //     let bulletX = this.x + this.width
-    //     let bulletY = this.y + this.height
+    
+}
 
-    //     let dogX = element.x + element.width
-    //     let dogY = element.y + element.height
+class Chancla {
+    constructor(x, y) {
+        this.width = 40
+        this.height = 40
+        this.velocity = 10
+        this.x = x
+        this.y = y
+    }
+    draw() {
+        this.x += this.velocity
 
-    //     if (dist(bulletX, bulletY, dogX, dogY) > this.width) {
-    //         return false
-    //     } else {
-    //         // bullets.score += 100
-    //         // document.querySelector("h3 span").innerText = bullets.score
-    //         return true
-    //     }
-    // }
-
+    }
+    
 }
 
 
@@ -40,7 +40,21 @@ class Bullet {
 
 
 
+// collision(element) {
+//     let bulletX = this.x + this.width
+//     let bulletY = this.y + this.height
 
+//     let dogX = element.x + element.width
+//     let dogY = element.y + element.height
+
+//     if (dist(bulletX, bulletY, dogX, dogY) > this.width) {
+//         return false
+//     } else {
+//         // bullets.score += 100
+//         // document.querySelector("h3 span").innerText = bullets.score
+//         return true
+//     }
+// }
 
     // collision(playerInfo) {
     //     let obstacleX = this.x + this.width / 2

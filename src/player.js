@@ -4,6 +4,7 @@ class Player {
         this.height = 70
         this.x = 0
         this.y = 0
+        this.score = 0
     }
     draw() {
         if (this.y >= height - this.height) this.y = height - this.height
