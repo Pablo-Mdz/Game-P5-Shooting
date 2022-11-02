@@ -2,7 +2,7 @@ class Player {
     constructor() {
         this.width = 80
         this.height = 70
-        this.x = 0
+        this.x = 50
         this.y = 300
         this.score = 0
     }
@@ -28,7 +28,7 @@ class Player {
     }
 
     moveRight() {
-        if (this.x <= 1100) {
+        if (this.x <= 600) {
             this.x += 50 //10 go slow
         }
     }  

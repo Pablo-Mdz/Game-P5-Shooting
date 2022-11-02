@@ -8,18 +8,19 @@ class Game {
         this.chancla = []
         this.spiders = []
         this.dogs = []
-        this.score = 0
         this.rat = []
+        this.score = 0
     }
     
     preload() {
        
-        this.backgroundImage = loadImage("../pictures/bgnight.jpeg")
+        this.backgroundImage = loadImage("../pictures/street.jpeg")
         this.playerImage = loadImage("../pictures/cupido1.png")
         this.heart = loadImage("../pictures/heart1.png")
         this.spiderimg = loadImage("../pictures/spider.png")
         this.chanclaImg = loadImage("../pictures/chancla2.png")
         this.ratImg = loadImage("../pictures/rat.png")
+        this.oliver = loadImage("../pictures/oliverMountain.jpeg")
 
         //! images Dogs
         this.dog1 = loadImage("../pictures/1.png")
@@ -31,8 +32,8 @@ class Game {
         this.dog7 = loadImage("../pictures/7.png")
         this.dog8 = loadImage("../pictures/8.png")
         
-        this.dogsImg = [this.dog1, this.dog2, this.dog3, this.dog4, this.dog5, this.dog6,this.dog7,this.dog8] 
-
+        // this.dogsImg = [this.dog1, this.dog2, this.dog3, this.dog4, this.dog5, this.dog6,this.dog7,this.dog8] 
+        this.dogsImg2 = [this.dog3,this.dog4, this.dog5];
     }
 
     draw() {
@@ -41,7 +42,7 @@ class Game {
         this.player.draw()
 
         //! music 
-        // backgroundSound.play()
+        backgroundSound.play()
 
         //! create bullet
         this.bullets.forEach(bullet => {
@@ -76,7 +77,7 @@ class Game {
 
         //! dogs from the side
         if (frameCount % 150 === 0) {
-            this.dogs.push(new Pets(this.dogsImg[Math.floor(Math.random() * 2)]))
+            this.dogs.push(new Pets(this.dogsImg2[Math.floor(Math.random() * 3)]))
         }
         this.dogs.forEach(dog => {
             dog.draw()
@@ -87,6 +88,8 @@ class Game {
          for ( let i=0; i < this.bullets.length; i++ ) {
             this.dogs = this.dogs.filter(oliver => { 
                 if (oliver.collision(this.bullets[i]) || oliver.x < -oliver.width) {
+                    catchOlverSound.play()
+                    
                             this.score += 100
                             document.querySelector("h3 span").innerHTML = this.score //  += 100
                             return false
@@ -162,7 +165,9 @@ class Game {
         //! rat collision with the player
         this.rat = this.rat.filter(rata => {
             if (rata.collision(this.player) ||rata.x < -rata.width) {
+                image(this.oliver, 350, 150, 650 ,350 )
                 textSize(100)
+                
             text("You LOST!!!!!! :D", 700, 300)
             noLoop()
                 return false
@@ -177,6 +182,7 @@ class Game {
 
           //! score win
         if (this.score >= 1000) {
+
             textSize(32)
             text("You won!!!!!! :D", 100, 100)
             noLoop()
@@ -200,6 +206,7 @@ class Game {
 
 
 
+// image(game.messi, 100, 270, 350 ,180 );
 
 
 
