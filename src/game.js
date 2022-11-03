@@ -10,30 +10,36 @@ class Game {
         this.dogs = []
         this.rat = []
         this.score = 0
+        this.killedAnimals = 0
+        // this.backgroundSound
     }
-    
+
     preload() {
-       
-        this.backgroundImage = loadImage("../pictures/street.jpeg")
-        this.playerImage = loadImage("../pictures/cupido1.png")
-        this.heart = loadImage("../pictures/heart1.png")
-        this.spiderimg = loadImage("../pictures/spider.png")
-        this.chanclaImg = loadImage("../pictures/chancla2.png")
-        this.ratImg = loadImage("../pictures/rat.png")
-        this.oliver = loadImage("../pictures/oliverMountain.jpeg")
+
+        this.backgroundImage = loadImage("../media/bgnight.jpeg")
+        // this.backgroundSound = loadSound("../media/Tetris.mp3", loaded)
+        this.playerImage = loadImage("../media/cupido1.png")
+        this.heart = loadImage("../media/heart1.png")
+        this.spiderimg = loadImage("../media/spider.png")
+        this.chanclaImg = loadImage("../media/chancla2.png")
+        this.ratImg = loadImage("../media/rat.png")
+        this.oliver = loadImage("../media/oliverMountain.jpeg")
+        this.gameOver = loadImage("../media/gameOver.webp")
+        this.spiderReal = loadImage("../media/spiderReal.jpeg")
+        this.ratBit = loadImage("../media/ratBit.jpeg")
 
         //! images Dogs
-        this.dog1 = loadImage("../pictures/1.png")
-        this.dog2 = loadImage("../pictures/2.png")
-        this.dog3 = loadImage("../pictures/3.png")
-        this.dog4 = loadImage("../pictures/4.png")
-        this.dog5 = loadImage("../pictures/5.png")
-        this.dog6 = loadImage("../pictures/6.png")
-        this.dog7 = loadImage("../pictures/7.png")
-        this.dog8 = loadImage("../pictures/8.png")
-        
+        this.dog1 = loadImage("../media/1.png")
+        this.dog2 = loadImage("../media/2.png")
+        this.dog3 = loadImage("../media/3.png")
+        this.dog4 = loadImage("../media/4.png")
+        this.dog5 = loadImage("../media/5.png")
+        this.dog6 = loadImage("../media/6.png")
+        this.dog7 = loadImage("../media/7.png")
+        this.dog8 = loadImage("../media/8.png")
+
         // this.dogsImg = [this.dog1, this.dog2, this.dog3, this.dog4, this.dog5, this.dog6,this.dog7,this.dog8] 
-        this.dogsImg2 = [this.dog3,this.dog4, this.dog5];
+        this.dogsImg2 = [this.dog3, this.dog4, this.dog5];
     }
 
     draw() {
@@ -64,7 +70,7 @@ class Game {
         if (frameCount % 100 === 0) {
             this.spiders.push(new Spiders(this.spiderimg[Math.floor(Math.random() * 6)]))
         }
-        
+
         //! create rat
         this.rat.forEach(rata => {
             rata.draw()
@@ -82,81 +88,95 @@ class Game {
         this.dogs.forEach(dog => {
             dog.draw()
         })
-       
+
 
         //! boolet collision with the dog
-         for ( let i=0; i < this.bullets.length; i++ ) {
-            this.dogs = this.dogs.filter(oliver => { 
+        for (let i = 0; i < this.bullets.length; i++) {
+            this.dogs = this.dogs.filter(oliver => {
                 if (oliver.collision(this.bullets[i]) || oliver.x < -oliver.width) {
                     catchOlverSound.play()
-                    
-                            this.score += 100
-                            document.querySelector("h3 span").innerHTML = this.score //  += 100
-                            return false
-                        } else {
-                            return true
-                        }
-                    })
+
+                    this.score += 100
+                    document.querySelector("h3 span").innerHTML = this.score
+                    return false
+                } else {
+                    return true
                 }
+            })
+        }
 
         //! chancla collision with the spider
-         for ( let i=0; i < this.chancla.length; i++ ) {
-            this.spiders = this.spiders.filter(spider => { 
+        for (let i = 0; i < this.chancla.length; i++) {
+            this.spiders = this.spiders.filter(spider => {
                 if (spider.collision(this.chancla[i]) || spider.x < -spider.width) {
-                            return false
-                        } else {
-                            return true
-                        }
-                    })
+                    splashSound.play()
+
+                    this.killedAnimals += 1
+                    document.querySelector(".killed").innerHTML = this.killedAnimals
+                    return false
+                } else {
+                    return true
                 }
+            })
+        }
 
         //! chancla collision with the rat
-         for ( let i=0; i < this.chancla.length; i++ ) {
-            this.rat = this.rat.filter(rata => { 
-                if (rata.collision(this.chancla[i]) ||rata.x < rata.width) {
-                            return false
-                        } else {
-                            return true
-                        }
-                    })
-                }
+        for (let i = 0; i < this.chancla.length; i++) {
+            this.rat = this.rat.filter(rata => {
+                if (rata.collision(this.chancla[i]) || rata.x < rata.width) {
+                    splashSound.play()
 
-        
+                    this.killedAnimals += 1
+                    document.querySelector(".killed").innerHTML = this.killedAnimals
+                    return false
+                } else {
+                    return true
+                }
+            })
+        }
+
+
 
         //! spider collision with the dog
-         for ( let i=0; i < this.spiders.length; i++ ) {
-            this.dogs = this.dogs.filter(oliver => { 
+        for (let i = 0; i < this.spiders.length; i++) {
+            this.dogs = this.dogs.filter(oliver => {
                 if (oliver.collision(this.spiders[i]) || oliver.x < -oliver.width) {
                     OliverScreamSound.play()
-                    textSize(100)
-                    text("You lost!!!!!! :D", 600, 300)
+                    image(this.gameOver, 350, 150, 650, 350)
+                    textSize(80)
+                    text("You scared Oliver 😭", 300, 100)
                     noLoop()
-                            return false
-                        } else {
-                            return true
-                        }
-                    })
+                    // location.reload()
+                    return false
+                } else {
+                    return true
                 }
+            })
+        }
         //! rat collision with the dog
-         for ( let i=0; i < this.rat.length; i++ ) {
-            this.dogs = this.dogs.filter(oliver => { 
+        for (let i = 0; i < this.rat.length; i++) {
+            this.dogs = this.dogs.filter(oliver => {
                 if (oliver.collision(this.rat[i]) || oliver.x < -oliver.width) {
                     OliverScreamSound.play()
-                    textSize(100)
-                    text("You lost!!!!!! :D", 600, 300)
+                    image(this.gameOver, 350, 150, 650, 350)
+                    textSize(80)
+                    text("You scared Oliver 😭", 300, 100)
                     noLoop()
-                            return false
-                        } else {
-                            return true
-                        }
-                    })
+                    return false
+                } else {
+                    return true
                 }
+            })
+        }
         //! spider collision with the player
         this.spiders = this.spiders.filter(spider => {
-            if (spider.collision(this.player) ||spider.x < -spider.width) {
-                textSize(100)
-            text("You LOST!!!!!! :D", 600, 300)
-            noLoop()
+            if (spider.collision(this.player) || spider.x < -spider.width) {
+                image(this.spiderReal, 400, 150, 650, 350)
+                textSize(50)
+                text("The spider bit you, you couldn't save Oliver 😭", 100, 100)
+                noLoop()
+                
+                // backgroundSound.stop()
                 return false
             } else {
                 return true
@@ -164,49 +184,50 @@ class Game {
         })
         //! rat collision with the player
         this.rat = this.rat.filter(rata => {
-            if (rata.collision(this.player) ||rata.x < -rata.width) {
-                image(this.oliver, 350, 150, 650 ,350 )
-                textSize(100)
-                
-            text("You LOST!!!!!! :D", 700, 300)
-            noLoop()
+            if (rata.collision(this.player) || rata.x < -rata.width) {
+                // image(this.gameOver, 350, 150, 650, 350)
+                image(this.ratBit, 400, 150, 650, 350)
+                textSize(50)
+                text("The Rat bit you, you couldn't save Oliver 😭", 200, 100)
+                noLoop()
+
                 return false
             } else {
                 return true
             }
         })
-                
-
-       
 
 
-          //! score win
+
+
+
+        //! score win
         if (this.score >= 1000) {
-
-            textSize(32)
-            text("You won!!!!!! :D", 100, 100)
+            image(this.oliver, 400, 150, 650, 350)
+            winn.play() 
+            textSize(35)
+            text("You saved Oliver, he is very happy with you!! 🤗", 400, 100)
             noLoop()
         }
-    
+
 
     }
 
-   //! shoot bullets
-   shootHeart() {
-       this.bullets.push(new Bullet(this.player.x + 60 , this.player.y + 20))
-       shootSound2.play()
+    //! shoot bullets
+    shootHeart() {
+        this.bullets.push(new Bullet(this.player.x + 60, this.player.y + 20))
+        shootSound2.play()
     }
-   shootChancla() {
-       this.chancla.push(new Chancla(this.player.x + 60 , this.player.y + 20))
-       shootSound.play()
+    shootChancla() {
+        this.chancla.push(new Chancla(this.player.x + 60, this.player.y + 20))
+        shootSound.play()
     }
-    
+
 }
 
 
 
 
-// image(game.messi, 100, 270, 350 ,180 );
 
 
 
@@ -214,21 +235,6 @@ class Game {
 
 
 
-
-
-
-
+//imagenes cuando pierde y cuando gana con sonidos
     //to stop the game
-//     this.obstacles.forEach(obstacle => {    
-//         obstacle.draw()
-//         if(obstacle.collision(this.plauyer)) {
-//             noLoop() or obstacle.velocity = -5
-                // textSize(32)                             cartel de win or lose
-                // text('you won!!' , 300,300)
-//         }
-        
-
-
-
-// sound with love
-// aranas se caen al morir (girando
+// aranas se caen al morir (girando)

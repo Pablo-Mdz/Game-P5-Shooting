@@ -1,14 +1,15 @@
 class Spiders {
     constructor() {
-        this.x = (Math.random() * width/2)
+        this.x = (Math.random() * width* 3/4)
         this.y = 0
         this.width = 40
         this.height = 50
-        // this.velocity = 3
+        
     }
 
     draw() {
         this.y++
+        
         image(game.spiderimg, this.x, this.y, this.width, this.height)
     }
 
@@ -35,15 +36,16 @@ class Spiders {
 //! class rat
 class Rat {
     constructor() {
-        this.x = (Math.random() * width /2)
+        this.x = (Math.random() * width* 3/4)
         this.y = 600
-        this.width = 55
+        this.width = 70
         this.height = 30
-        // this.velocity = 3
+        
     }
 
     draw() {
         this.y--
+        
         image(game.ratImg, this.x, this.y, this.width, this.height)
     }
 

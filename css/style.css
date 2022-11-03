@@ -1,3 +1,11 @@
+* {
+    font-family: 'Press Start 2P', cursive;
+}
+body {
+    background-image: url("../media/bgSpider.webp");
+
+}
+
 h1 {
     color: rebeccapurple;
     text-align: center;
@@ -9,4 +17,20 @@ h1 {
 }
 div {
     text-align: center;
+    color: aliceblue;
+}
+#wrapper {
+    background-color: black;
+    display: block;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+#btnReload {
+    color:aliceblue;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 10px  white;
+    background: 0 0;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }

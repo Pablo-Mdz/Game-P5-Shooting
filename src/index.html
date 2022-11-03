@@ -7,19 +7,28 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link rel="stylesheet" href="../css/style.css" />
         <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
-        <audio id="backgroundSound" src="../pictures/Tetris.mp3" preload="auto"></audio>
-        <audio id="shootSound2" src="../pictures/shooting.wav" preload="auto"></audio>
-        <audio id="shootSound" src="../pictures/shooting2.wav" preload="auto"></audio>
-        <audio id="OliverScreamSound" src="../pictures/oliverScream.wav" preload="auto"></audio>
-        <audio id="catchOlverSound" src="../pictures/ladrido.wav" preload="auto"></audio>
+        <audio id="backgroundSound" src="../media/Tetris.mp3" preload="auto"></audio>
+        <audio id="shootSound2" src="../media/shooting.wav" preload="auto"></audio>
+        <audio id="shootSound" src="../media/shooting2.wav" preload="auto"></audio>
+        <audio id="OliverScreamSound" src="../media/oliverScream.wav" preload="auto"></audio>
+        <audio id="winn" src="../media/winn.wav" preload="auto"></audio>
+        <audio id="splashSound" src="../media/splash.wav" preload="auto"></audio>
+        <audio id="catchOlverSound" src="../media/ladrido.wav" preload="auto"></audio>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        </style>
         <title>Oliver's Game</title>
     </head>
 
     <body>
-        <h1>Save Oliver from his fears!!</h1>
+        
         <div id="scoreAndLives">
             <h3>Score: <span>0</span></h3>
-            <h3>Lives: <span>3</span></h3>
+            <button id="btnReload" onclick="location.reload()">
+                Play again
+            </button>
+            <h3> Killed animals: <span class="killed">0</spa>
+            </h3>
         </div>
         <!-- <canvas id="myCanvas" width="900" height="500"></canvas> -->
 

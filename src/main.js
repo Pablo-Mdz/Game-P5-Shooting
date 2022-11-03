@@ -4,6 +4,7 @@ const game = new Game()
 
 function preload() {
     game.preload()
+   
 
 }
 function setup() {
@@ -17,6 +18,7 @@ function draw() {
 function keyPressed() {
 
     //! move player
+    
     if (keyCode === 39) {
         game.player.moveRight()
     }
@@ -33,10 +35,13 @@ function keyPressed() {
     }
 
     //! shooting
-    if (keyCode === 32) {
+    if (keyCode === 70) {
         game.shootHeart()
     }
     if (keyCode === 83) {
         game.shootChancla()
+    }
+    if(keyCode === 32) {
+        game.pause()
     }
 }

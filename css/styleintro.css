@@ -1,0 +1,74 @@
+* {
+    font-family: "Press Start 2P", cursive;
+    justify-content: center;
+    
+}
+body {
+    /* background-image: url('../media/oliverMountain.jpeg'); */
+    background-color: #ef4423;
+}
+
+h1 {
+    color: rgb(231, 228, 233);
+    text-align: center;
+    font-size: 40px;
+}
+
+div {
+    text-align: center;
+}
+
+#wrapper {
+    display: block;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.game-p {
+    font-size: 30px;
+}
+.list li {
+    display: block;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+/* button  */
+:before,
+:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button {
+    margin-top: 30px;
+    position: relative;
+    font-weight: 600;
+    height: 40px;
+    padding: 12px 20px;
+    outline: none;
+    border: 2px solid black;
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 7px;
+    left: 7px;
+    height: 100%;
+    background-color: #f6eb14;
+    z-index: -1;
+    transition: all 0.35s;
+    border-radius: inherit;
+}
+
+button:hover:after {
+    top: 0px;
+    left: 0px;
+}
