@@ -35,7 +35,7 @@ function keyPressed() {
     }
 
     //! shooting
-    if (keyCode === 70) {
+    if (keyCode === 32) {
         game.shootHeart()
     }
     if (keyCode === 83) {

@@ -13,7 +13,10 @@ h1 {
     text-align: center;
     font-size: 40px;
 }
-
+img {
+    max-width: 3%;
+  height: auto;
+}
 div {
     text-align: center;
 }

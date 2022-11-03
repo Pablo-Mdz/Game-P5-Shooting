@@ -16,8 +16,7 @@ class Game {
 
     preload() {
 
-        this.backgroundImage = loadImage("../media/bgnight.jpeg")
-        // this.backgroundSound = loadSound("../media/Tetris.mp3", loaded)
+        this.backgroundImage = loadImage("../media/bg1.jpeg")
         this.playerImage = loadImage("../media/cupido1.png")
         this.heart = loadImage("../media/heart1.png")
         this.spiderimg = loadImage("../media/spider.png")
@@ -142,11 +141,11 @@ class Game {
             this.dogs = this.dogs.filter(oliver => {
                 if (oliver.collision(this.spiders[i]) || oliver.x < -oliver.width) {
                     OliverScreamSound.play()
-                    image(this.gameOver, 350, 150, 650, 350)
+                    image(this.gameOver, 100, 100, 1200, 500) //350, 150, 650, 350
                     textSize(80)
-                    text("You scared Oliver 😭", 300, 100)
+                    textFont('cursive')
+                    text("You scared Oliver 😭", 330, 170)
                     noLoop()
-                    // location.reload()
                     return false
                 } else {
                     return true
@@ -160,6 +159,7 @@ class Game {
                     OliverScreamSound.play()
                     image(this.gameOver, 350, 150, 650, 350)
                     textSize(80)
+                    textFont('cursive')
                     text("You scared Oliver 😭", 300, 100)
                     noLoop()
                     return false
@@ -173,7 +173,9 @@ class Game {
             if (spider.collision(this.player) || spider.x < -spider.width) {
                 image(this.spiderReal, 400, 150, 650, 350)
                 textSize(50)
-                text("The spider bit you, you couldn't save Oliver 😭", 100, 100)
+                textFont('cursive')
+                text("The spider bit you, you couldn't save Oliver 😭", 250, 100)
+                backgroundSound.stop()
                 noLoop()
                 
                 // backgroundSound.stop()
@@ -185,10 +187,11 @@ class Game {
         //! rat collision with the player
         this.rat = this.rat.filter(rata => {
             if (rata.collision(this.player) || rata.x < -rata.width) {
-                // image(this.gameOver, 350, 150, 650, 350)
+             
                 image(this.ratBit, 400, 150, 650, 350)
                 textSize(50)
-                text("The Rat bit you, you couldn't save Oliver 😭", 200, 100)
+                textFont('cursive')
+                text("The Rat bit you, you couldn't save Oliver 😭", 250, 100)
                 noLoop()
 
                 return false
@@ -203,10 +206,11 @@ class Game {
 
         //! score win
         if (this.score >= 1000) {
-            image(this.oliver, 400, 150, 650, 350)
+            image(this.oliver, 350, 150, 800, 450)
             winn.play() 
-            textSize(35)
-            text("You saved Oliver, he is very happy with you!! 🤗", 400, 100)
+            textSize(60)
+            textFont('cursive')
+            text("You saved Oliver, he is very happy with you!! 🤗", 200, 100)
             noLoop()
         }
 
@@ -224,17 +228,3 @@ class Game {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-//imagenes cuando pierde y cuando gana con sonidos
-    //to stop the game
-// aranas se caen al morir (girando)
