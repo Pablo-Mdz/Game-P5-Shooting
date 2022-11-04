@@ -16,26 +16,26 @@ class Game {
 
     preload() {
 
-        this.backgroundImage = loadImage("../media/bg1.jpeg")
-        this.playerImage = loadImage("../media/cupido1.png")
-        this.heart = loadImage("../media/heart1.png")
-        this.spiderimg = loadImage("../media/spider.png")
-        this.chanclaImg = loadImage("../media/chancla2.png")
-        this.ratImg = loadImage("../media/rat.png")
-        this.oliver = loadImage("../media/oliverMountain.jpeg")
-        this.gameOver = loadImage("../media/gameOver.webp")
-        this.spiderReal = loadImage("../media/spiderReal.jpeg")
-        this.ratBit = loadImage("../media/ratBit.jpeg")
+        this.backgroundImage = loadImage("media/bg1.jpeg")
+        this.playerImage = loadImage("media/cupido1.png")
+        this.heart = loadImage("media/heart1.png")
+        this.spiderimg = loadImage("media/spider.png")
+        this.chanclaImg = loadImage("media/chancla2.png")
+        this.ratImg = loadImage("media/rat.png")
+        this.oliver = loadImage("media/oliverMountain.jpeg")
+        this.gameOver = loadImage("media/gameOver.webp")
+        this.spiderReal = loadImage("media/spiderReal.jpeg")
+        this.ratBit = loadImage("media/ratBit.jpeg")
 
         //! images Dogs
-        this.dog1 = loadImage("../media/1.png")
-        this.dog2 = loadImage("../media/2.png")
-        this.dog3 = loadImage("../media/3.png")
-        this.dog4 = loadImage("../media/4.png")
-        this.dog5 = loadImage("../media/5.png")
-        this.dog6 = loadImage("../media/6.png")
-        this.dog7 = loadImage("../media/7.png")
-        this.dog8 = loadImage("../media/8.png")
+        this.dog1 = loadImage("media/1.png")
+        this.dog2 = loadImage("media/2.png")
+        this.dog3 = loadImage("media/3.png")
+        this.dog4 = loadImage("media/4.png")
+        this.dog5 = loadImage("media/5.png")
+        this.dog6 = loadImage("media/6.png")
+        this.dog7 = loadImage("media/7.png")
+        this.dog8 = loadImage("media/8.png")
 
         // this.dogsImg = [this.dog1, this.dog2, this.dog3, this.dog4, this.dog5, this.dog6,this.dog7,this.dog8] 
         this.dogsImg2 = [this.dog3, this.dog4, this.dog5];
