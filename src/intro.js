@@ -1,5 +1,5 @@
 function preload() {
-    introSound = loadSound('../media/introSound.wav');
+    introSound = loadSound('media/introSound.wav');
 }
 
 function setup(){
